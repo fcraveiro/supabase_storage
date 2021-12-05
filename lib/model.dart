@@ -101,7 +101,5 @@ class Historico {
       hisPathServer: map['his_idPathServer'.toString()],
       hisfoto: map['his_foto'.toString()],
     );
-
-    // teste
   }
 }
