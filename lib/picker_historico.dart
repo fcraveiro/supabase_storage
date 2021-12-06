@@ -7,6 +7,8 @@ import 'package:lottie/lottie.dart';
 import 'dart:math';
 import 'dart:io';
 
+import 'package:supabase_storage/setup.dart';
+
 class Inicio extends StatefulWidget {
   const Inicio({Key? key}) : super(key: key);
 
@@ -48,8 +50,19 @@ class _InicioState extends State<Inicio> {
       appBar: AppBar(
         title: const Text('Histórico'),
         centerTitle: true,
-        elevation: 6,
-//        backgroundColor: const Color(0xFF0D47A1),
+        elevation: 3,
+        actions: [
+          IconButton(
+            onPressed: () => {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const Setup(),
+                ),
+              ),
+            },
+            icon: const Icon(Icons.settings),
+          ),
+        ],
       ),
       body: Center(
         child: SizedBox(
@@ -64,7 +77,6 @@ class _InicioState extends State<Inicio> {
                 height: 365,
                 padding: const EdgeInsets.all(0),
                 margin: const EdgeInsets.only(top: 45),
-//                color: Colors.purple,
                 child: temFoto
                     ? Image.file(File(pathFoto.path))
                     : Column(
@@ -90,21 +102,14 @@ class _InicioState extends State<Inicio> {
                               setState(() {
                                 temFoto = false;
                               });
-
                               _showToast(context);
                             },
-//                      style: ElevatedButton.styleFrom(
-//                        elevation: 7,
-//                        primary: Colors.green.shade700, // background
-//                        onPrimary: Colors.white, // foreground
-//                      ),
                             child: texto('SalvarI'),
                           ),
                         )
                       : const SizedBox(
                           width: 130,
                           height: 40,
-//                          color: Colors.white,
                         ),
                 ],
               ),
@@ -117,7 +122,6 @@ class _InicioState extends State<Inicio> {
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
-//                        color: Colors.blue.shade700,
                       ),
                     )
                   : const Text(
@@ -125,8 +129,6 @@ class _InicioState extends State<Inicio> {
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
-
-//                        color: Colors.blue.shade700,
                       ),
                     ),
               const SizedBox(
@@ -143,11 +145,6 @@ class _InicioState extends State<Inicio> {
                         foiSalva = false;
                         pickCamera();
                       },
-//                      style: ElevatedButton.styleFrom(
-//                        elevation: 7,
-//                        primary: Colors.green.shade700, // background
-//                        onPrimary: Colors.white, // foreground
-//                      ),
                       child: texto('Câmera'),
                     ),
                   ),
@@ -162,11 +159,6 @@ class _InicioState extends State<Inicio> {
                         foiSalva = false;
                         pickgaleria();
                       },
-//                      style: ElevatedButton.styleFrom(
-//                        elevation: 7,
-//                        primary: Colors.green.shade700, // background
-//                        onPrimary: Colors.white, // foreground
-//                      ),
                       child: texto('Galeria'),
                     ),
                   ),
@@ -272,7 +264,6 @@ class _InicioState extends State<Inicio> {
     scaffold.showSnackBar(
       const SnackBar(
         elevation: 10,
-//        backgroundColor: Color(0xFF0D47A1),
         duration: Duration(seconds: 2),
         content: Text(
           'Salvo com Sucesso !!',
@@ -306,24 +297,3 @@ class _InicioState extends State<Inicio> {
     ).execute();
   }
 }
-
-/*                        
-                           ElevatedButton(
-                            onPressed: () {
-                              gravacao();
-                              setState(() {
-                                temFoto = false;
-                              }
-                              
-                              );
-                              _showToast(context);
-                            },
-//                            style: ElevatedButton.styleFrom(
-//                              elevation: 7,
-//                              primary: Colors.red.shade700, // background
-//                             onPrimary: Colors.white, // foreground
-//                            ),
-                            child: texto('SalvarI'),
-                          ),
-
-*/

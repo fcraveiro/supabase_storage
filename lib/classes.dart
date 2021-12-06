@@ -10,27 +10,14 @@ class AppColor {
       FlexColorScheme.light(scheme: FlexScheme.indigo).toTheme;
 }
 
-class TemasController extends ChangeNotifier {
-  int _number = 1;
-  int get number => _number;
-  incNumber() {
-    _number = _number + 1;
+class ThemeProvider extends ChangeNotifier {
+  ThemeMode themeMode = ThemeMode.dark;
+  bool get isDarkMode => themeMode == ThemeMode.dark;
+
+  void toogleTheme(bool isOn) {
+    themeMode = isOn ? ThemeMode.dark : ThemeMode.light;
+    // ignore: avoid_print
+    print('Segundo : $isOn');
     notifyListeners();
   }
 }
-
-
-/*
-
-          Consumer<TemasController>(
-        
-builder: (BuildContext context, TemasController value, Widget child) {
-return AppColor.tipo2};
-
-          (WidgetTester tester) async {},
-        );),
-  }
-
-Provider.of<TemasController>(context, listen: false).incNumber();
-
-  */
